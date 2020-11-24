@@ -32,10 +32,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Problem.cpp" />
 		<Unit filename="Problem.h" />
+		<Unit filename="SetUpParams.cpp" />
 		<Unit filename="SetUpParams.h" />
+		<Unit filename="Solution.cpp" />
 		<Unit filename="Solution.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="optimizationAlgorithm.cpp" />
 		<Unit filename="optimizationAlgorithm.h" />
 		<Extensions>
 			<code_completion />

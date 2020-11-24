@@ -1,3 +1,11 @@
+#ifndef SOLUTION_H
+#define SOLUTION_H
+#include "Problem.h"
+
+
+#include <vector>
+using namespace std;
+
 class Solution
   {
 	public:
@@ -26,3 +34,4 @@ class Solution
         double _current_fitness;
 		const Problem& _pbm;
   };
+#endif // SOLUTION_H

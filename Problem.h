@@ -1,3 +1,7 @@
+#ifndef PROBLEM_H
+#define PROBLEM_H
+
+
 class Problem
   {
 	public:
@@ -13,3 +17,4 @@ class Problem
 		int numfunction;
 
   };
+#endif // PROBLEM_H

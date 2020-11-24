@@ -1,3 +1,7 @@
+#ifndef SETUPPARAMS_H
+#define SETUPPARAMS_H
+
+
 class SetUpParams
   {
 
@@ -22,3 +26,4 @@ class SetUpParams
 
 		~SetUpParams();
   };
+#endif // SETUPPARAMS_H

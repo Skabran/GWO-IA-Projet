@@ -1,3 +1,10 @@
+#ifndef OPTIMIZATIONALGORITHM_H
+#define OPTIMIZATIONALGORITHM_H
+#include "Solution.h"
+#include "SetUpParams.h"
+#include <vector>
+
+using namespace std;
 class optimizationAlgorithm
   {
 	private:
@@ -30,3 +37,4 @@ class optimizationAlgorithm
 		void evolution(int iter); /*makes an evolution step*/
 
   };
+#endif // OPTIMIZATIONALGORITHM_H

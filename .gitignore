@@ -1,0 +1,52 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+#Clion
+.idea
+cmake-build-debug
+
+#GDrive
+desktop.ini
+
+#Visual Studio
+.vs
+GWO-Optimization.vcxproj.user
+GWO-Optimization.vcxproj.filters
+GWO-Optimization.json
+GWO-Optimization.sln
+GWO-Optimization.vcxproj
+
+#CodeBlocks
+GWO-Optimization.layout
+GWO-Optimization.depend
+GWO-Optimization.vcxproj.xml
