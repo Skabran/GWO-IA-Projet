@@ -1,5 +1,3 @@
-//#ifndef INC_METAHEURISTIC
-//#define INC_METAHEURISTIC
 #include <iostream>
 #include <fstream>
 #include <cmath>
