@@ -11,11 +11,23 @@
 //
 //Solution: f(x*) = 0 --> x* = ( 1, ... , 1 )
 //
+//----EN C++----
 //
+//Solution s;
+//
+//double sum = 0;
+//
+//vector<double> x = s.solution();
+// int d = s.Problem().dimension();
+//
+//for (int i = 1; i <= d - 1 ; ++i)
+//{ sum += 100 * pow(( x[i+1] - pow( x[i],2)),2) + pow(( x[i] - 1),2); }
+//
+//return sum;
 //
 //==RASTRIGIN==
 //
-//f(x,y) = 10*n + SUM [ x[i]^2 - 10 cos(2*M_PI*x[i]) ]
+//f(x,y) = 10*d + SUM [ x[i]^2 - 10 cos(2*M_PI*x[i]) ]
 //
 //UB = 5.12, LB = -5.12, DIM = d
 //
@@ -23,11 +35,23 @@
 //
 //Solution: f(x*) = 0 --> x* = ( 0, ... , 0 )
 //
+//----EN C++----
 //
+//Solution s;
+//
+//double sum = 0;
+//
+//vector<double> x = s.solution();
+// int d = s.Problem().dimension();
+//
+//for (int i = 1; i <= d ; ++i)
+//{ sum += 100 * pow( x[i],2) - 10*cos(2*M_PI*x[i]) }
+//
+//return 10*d + sum;
 //
 //==ACKLEY==
 //
-//f(x) = f( x1, ... , xn) = -20 * exp ( -0.2 * sqrt( (1/d) * SUM [ x[i]^2 ] ) - exp ( (1/d) * SUM [ cos(2*M_PI*x[i] ] ) + 20 + exp(1)
+//f(x) = f( x1, ... , xn) = -20 * exp ( -0.2 * sqrt( (1/d) * SUM [ x[i]^2 ] )) - exp ( (1/d) * SUM [ cos(2*M_PI*x[i] ] ) + 20 + exp(1)
 //
 //UB = 32, LB = -32, DIM = d
 //
@@ -35,7 +59,20 @@
 //
 //Solution: f(x*) = 0 --> x* = ( 0, ... , 0 )
 //
+//----EN C++----
 //
+//Solution s;
+//
+//double sum1 = 0;
+//double sum2 = 0;
+//
+//vector<double> x = s.solution();
+// int d = s.Problem().dimension();
+//
+//for (int i = 1; i <= d; ++i)
+//{ sum1 += pow( x[i],2); sum2 += cos(2*M_PI*x[i]) }
+//
+//return -20.0 * exp (-0.2 * sqrt( (1/d) * sum1 )) - exp ((1/d) * sum2) + 20 + exp(1);
 //
 //==SCWEFEL==
 //
@@ -47,7 +84,19 @@
 //
 //Solution: f(x*) = 0 --> x* = ( 420.9687, ... , 420.9687 )
 //
+//----EN C++----
 //
+//Solution s;
+//
+//double sum = 0;
+//
+//vector<double> x = s.solution();
+// int d = s.Problem().dimension();
+//
+//for (int i = 1; i <= d; ++i)
+//{ sum +=  x[i]*sin( sqrt( abs(x[i]) ) }
+//
+//return 418.9829*d - sum;
 //
 //==SCHAFFER==
 //
