@@ -21,7 +21,7 @@
 //This function initialize the first population of search agents
 vector<<double> function initialisation(int SearchAgents_no, int dim, vector<double> ub, vector<double> lb)
 {
-    //tableau "Position" résultat renvoyé par la fonction.
+    //tableau "Position" rÃ©sultat renvoyÃ© par la fonction.
     vector<double> Position;
 
     int Boundary_no = size(ub, 2);
@@ -30,7 +30,7 @@ vector<<double> function initialisation(int SearchAgents_no, int dim, vector<dou
     //number for both ub and lb
     if(Boundary_no == 1)
     {
-        Position = rand(SearchAgents_no,dim) .* (ub[0] - lb[0]) + lb[0];
+        Position.push_back(rand(SearchAgents_no,dim) .* (ub[0] - lb[0]) + lb[0]);
     }
 
     //If each variable has a different lb and ub
@@ -38,10 +38,11 @@ vector<<double> function initialisation(int SearchAgents_no, int dim, vector<dou
     {
         for(int i = 1; i< dim; ++i)
         {
-            ub[i] = ub(i); //ub(i) méthode d'une autre class ?
-            lb[i] = lb(i); //lb(i) méthode d'une autre class ?
-            Position = rand(SearchAgents_no, 1).*(ub[i] - lb[i]) + lb[i];
+            ub[i] = ub(i); //ub(i) mÃ©thode d'une autre class ?
+            lb[i] = lb(i); //lb(i) mÃ©thode d'une autre class ?
+            Position.push_back(rand(SearchAgents_no, 1).*(ub[i] - lb[i]) + lb[i]);
         }
     }
     return Position;
 }
+
