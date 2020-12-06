@@ -14,7 +14,7 @@ Delta_pos=zeros;
 Delta_score=INT_MAX; //change this to -inf for maximization problems
 
 //Initialize the positions of search agents
-Positions=initialization(SearchAgents_no,dim,ub,lb);
+vector<int> Positions=initialization(SearchAgents_no,dim,ub,lb);
 
 zeros.resize(Max_iter);
 Convergence_curve=zeros;
@@ -25,14 +25,17 @@ int loopCounter=0;// Loop counter
 while (loopCounter<Max_iter){
     for (int i=1; i<Position.size(); i++){
 
-
-    // A TRADUIRE
-
-
-
        // Return back the search agents that go beyond the boundaries of the search space
-        Flag4ub=Positions(i,:)>ub;
-        Flag4lb=Positions(i,:)<lb;
+       vector<int> Flag4ub, Flag4lb;
+       for(int j=0; j<Position[i].size();j++){
+        if(Positions[i][j]>uperBound){
+            Flag4ub.push_back(Position[i][j]);
+        }
+
+        if(Positions[i][j]<lowerBound){
+            Flag4lb.push_back(Position[i][j]);
+        }
+       }
         Positions(i,:)=(Positions(i,:).*(~(Flag4ub+Flag4lb)))+ub.*Flag4ub+lb.*Flag4lb;
 
         // Calculate objective function for each search agent
