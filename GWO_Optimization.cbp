@@ -41,7 +41,6 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="optimizationAlgorithm.cpp" />
 		<Unit filename="optimizationAlgorithm.h" />
-		<Unit filename="traduction_GWO_MathLab.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

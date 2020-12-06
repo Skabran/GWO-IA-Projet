@@ -30,7 +30,7 @@ class Solution
 
 
 	private:
-        vector<double> _solution;
+        vector<double> _solution;   //coordonnées de chaques solution. Sa taille est le nb de dimensions
         double _current_fitness;
 		const Problem& _pbm;
   };

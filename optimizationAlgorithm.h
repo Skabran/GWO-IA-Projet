@@ -7,14 +7,8 @@
 using namespace std;
 class optimizationAlgorithm
   {
-	private:
-		vector<Solution*> _population;     // individuals in population
-		vector<double> _fitness_values;
-		const SetUpParams& _setup;
-		unsigned int _lower_cost; // lower and upper fitness of individuals in population
-
-	public:
-      optimizationAlgorithm(const Problem& pbm,const SetUpParams& setup);
+      public:
+      optimizationAlgorithm(const Problem& pbm,const SetUpParams& setup); //setup avec un benchmark et un nombre d'agent (pas de nombre d'itération ?)
 		~optimizationAlgorithm();
 
 		const SetUpParams& setup() const;
@@ -35,6 +29,14 @@ class optimizationAlgorithm
 		Solution& best_solution() const;
 
 		void evolution(int iter); /*makes an evolution step*/
+
+	private:
+		vector<Solution*> _population;     // individuals in population
+		vector<double> _fitness_values;    //la fitness de chaque individu (Solution)
+		const SetUpParams& _setup;
+		unsigned int _lower_cost; // lower and upper fitness of individuals in population
+        unsigned int _upper_cost;
+
 
   };
 #endif // OPTIMIZATIONALGORITHM_H
