@@ -1,8 +1,8 @@
 #include "optimizationAlgorithm.h"
-#include "Solution.h"
 #include <cmath>
 #include <vector>
 #include "Problem.h"
+#include "Solution.h"
 
 //pour le générateur aléatoire
 #include <time.h>
@@ -67,30 +67,27 @@ void optimizationAlgorithm::evaluate(){
 }
 
 vector<double>&  optimizationAlgorithm::fitness_values(){
-    double fitness;
-    double valeur;
-    double limiteInf;
-    double limiteSupp;
-    for(unsigned int solutionIndex=0; solutionIndex<_population.size(); solutionIndex++){
-        //Si un loup est en dehors des frontières on le remet à la limite pour chaque coordonnées
-        for(unsigned int coordoneeIndex=0; coordoneeIndex<_population[solutionIndex].size(); coordoneeIndex++){
-            valeur=_population[solutionIndex][coordoneeIndex];
-            limiteInf = _population[solutionIndex]._pbm.LowerLimit;
-            limiteSupp = _population[solutionIndex]._pbm.UpperLimit
-            if(valeur < limiteInf){
-                _population[solutionIndex][coordoneeIndex]= limiteInf;
-            }
-            if(valeur> limiteSupp){
-                _population[solutionIndex][coordoneeIndex]=limiteSupp;
-            }
+//    double fitness;
+//    double valeur;
+//    double limiteInf;
+//    double limiteSupp;
+//    for(unsigned int solutionIndex=0; solutionIndex<_population.size(); solutionIndex++){
+//        //Si un loup est en dehors des frontières on le remet à la limite pour chaque coordonnées
+//        for(unsigned int coordoneeIndex=0; coordoneeIndex<_population[solutionIndex].size(); coordoneeIndex++){
+//            valeur=_population[solutionIndex][coordoneeIndex];
+//            limiteInf = _population[solutionIndex]._pbm.LowerLimit;
+//            limiteSupp = _population[solutionIndex]._pbm.UpperLimit
+//            if(valeur < limiteInf){
+//                _population[solutionIndex][coordoneeIndex]= limiteInf;
+//            }
+//            if(valeur> limiteSupp){
+//                _population[solutionIndex][coordoneeIndex]=limiteSupp;
+//            }
+//        }
+
+        for(unsigned int i=0; i<_population.size(); i++){
+            _population[i].fitness(_population.pbm().get_numfunction());
         }
-
-        //calcul de la fitness
-        fitness= //A comprendre
-
-        //Mise a jour de Alpha, Beta et Delta
-
-        // A FAIRE
     }
 }
 

@@ -25,7 +25,7 @@ class optimizationAlgorithm
 		double fitness(const unsigned int index) const;
 
 
-		double best_cost() const;
+		double best_cost() const; //Meilleur ever
 		Solution& best_solution() const;
 
 		void evolution(int iter); /*makes an evolution step*/
@@ -34,13 +34,15 @@ class optimizationAlgorithm
 		vector<Solution*> _population;     // individuals in population
 		vector<double> _fitness_values;    //la fitness de chaque individu (Solution)
 		const SetUpParams& _setup;
-		unsigned int _lower_cost; // lower and upper fitness of individuals in population
-        unsigned int _upper_cost;
+		unsigned int _lower_cost; // lower fitness of individuals in population
 
         unsigned int _maximum_iterations;
-        unsigned int _alpha_index;
+        unsigned int _alpha_index;  //Meilleur de cette génération
+        double _alpha_score;
         unsigned int _beta_index;
+        double _beta_score;
         unsigned int _delta_index;
+        double _delta_score
 
 
   };

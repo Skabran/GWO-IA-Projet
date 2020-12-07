@@ -9,12 +9,15 @@ class Problem
 		~Problem();
 
 		int dimension() const;
+		int get_numfunction() const;
+		int get_lowerLimit() const;
+		int get_upperLimit() const;
 
 	private:
 
 		int _dimension;
-		double LowerLimit, UpperLimit;
-		int numfunction;
+		double _lowerLimit, _upperLimit;
+		int _numfunction;
 
   };
 #endif // PROBLEM_H
