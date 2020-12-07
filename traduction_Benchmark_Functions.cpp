@@ -20,7 +20,7 @@
 //vector<double> x = s.solution();
 // int d = s.Problem().dimension();
 //
-//for (int i = 1; i <= d - 1 ; ++i)
+//for (int i = 0; i < d - 1 ; ++i)
 //{ sum += 100 * pow(( x[i+1] - pow( x[i],2)),2) + pow(( x[i] - 1),2); }
 //
 //return sum;
@@ -44,8 +44,8 @@
 //vector<double> x = s.solution();
 // int d = s.Problem().dimension();
 //
-//for (int i = 1; i <= d ; ++i)
-//{ sum += 100 * pow( x[i],2) - 10*cos(2*M_PI*x[i]) }
+//for (int i = 0; i < d ; ++i)
+//{ sum += 100 * pow( x[i],2) - 10*cos(2*M_PI*x[i]); }
 //
 //return 10*d + sum;
 //
@@ -69,10 +69,10 @@
 //vector<double> x = s.solution();
 // int d = s.Problem().dimension();
 //
-//for (int i = 1; i <= d; ++i)
-//{ sum1 += pow( x[i],2); sum2 += cos(2*M_PI*x[i]) }
+//for (int i = 0; i < d; ++i)
+//{ sum1 += pow( x[i],2); sum2 += cos(2.0*M_PI*x[i]); }
 //
-//return -20.0 * exp (-0.2 * sqrt( (1/d) * sum1 )) - exp ((1/d) * sum2) + 20 + exp(1);
+//return - (20.0 * exp ((-0.2) * sqrt(sum1/d))) - exp(sum2/d) + 20.0 + exp(1.0);
 //
 //==SCWEFEL==
 //
@@ -93,20 +93,12 @@
 //vector<double> x = s.solution();
 // int d = s.Problem().dimension();
 //
-//for (int i = 1; i <= d; ++i)
-//{ sum +=  x[i]*sin( sqrt( abs(x[i]) ) }
+//for (int i = 0; i < d; ++i)
+//{ sum +=  x[i]*sin( sqrt( abs(x[i]) )); }
 //
 //return 418.9829*d - sum;
 //
 //==SCHAFFER==
-//
-//-Version 1-
-//
-//f(x,y) = 0.5 + ( (sin(x^2 + y^2)^2)^2 - 0.5 ) / (1 + 0.001*( x^2 + y^2 )^2
-//
-//UB = 100, LB = -100, DIM = 2 (i=1, i=2)
-//
-//Solution: f(x*) = 0 --> x* = ( 0, 0 )
 //
 //-Version 2-
 //
@@ -116,15 +108,11 @@
 //
 //Solution: f(x*) = 0 --> x* = ( 0, 0 )
 //
-//-Version 3-
+//----EN C++----
 //
-//f(x,y) = 0.5 + ( (sin(cos( abs(x^2 - y^2) ))^2 - 0.5 ) / (1 + 0.001*( x^2 + y^2 )^2
+//double x = 0; double y = 0;
 //
-//UB = 100, LB = -100, DIM = 2 (i=1, i=2)
-//
-//Solution: f(x*) = 0.00156685 --> x* = ( 0, 1.253115 )
-//
-//
+//return 0.5 + ( sin((pow(pow(x,2) - pow(y,2),2))) - 0.5 ) / ( 1 + 0.001*pow((pow(x,2) + pow(y,2)),2));
 //
 //==WEIERSTRASS==
 //
@@ -136,4 +124,31 @@
 //
 //kmax = 20, d = 30
 //
+//----EN C++----
 //
+//Solution s;
+//
+//double sum1 = 0;
+//double sum2 = 0;
+//double sum3 = 0;
+//
+//vector<double> x = s.solution();
+// int d = s.Problem().dimension();
+//
+//for (int i = 0; i < d; ++i)
+//  {
+//    for (int k = 0; k < 20; ++k)
+//    {
+//        sum2 += pow(0.5,k) * cos(2.0 * M_PI * pow(3,k) * (x[i] + 0.5));
+//    }
+//
+//    sum1 += sum2;
+//    sum2 = 0;
+//  }
+//
+//  for (int k = 0; k < 20; ++k)
+//    {
+//        sum3 += pow(0.5,k) * cos(2.0 * M_PI * pow(3,k) * 0.5);
+//    }
+//
+//  return sum1 - d*sum3;
