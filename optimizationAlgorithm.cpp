@@ -9,11 +9,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+using namespace std;
 
 void optimizationAlgorithm::evolution(int a){
     for(unsigned int solutionIndex=0; solutionIndex<_population.size(); solutionIndex++){
-        for(unsigned int coordoneeIndex=0; coordoneeIndex<_population._solution.size(); coordoneeIndex++){
+        for(unsigned int coordoneeIndex=0; coordoneeIndex<_population.solution().size(); coordoneeIndex++){
             double r1 = rand()/RAND_MAX;
             double r2 = rand()/RAND_MAX;
 
@@ -112,6 +112,6 @@ unsigned int optimizationAlgorithm::upper_cost() const {
     return _upper_cost;
 }
 
-using namespace std;
+
 
 

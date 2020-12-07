@@ -21,9 +21,9 @@ class Solution
 
 		void initialize();
 		double fitness(int numfunction);
-		double get_fitness();
+		double get_fitness() const;
 
-		vector<double>& solution();
+		vector<double>& solution() const;
 
 		double& position(const int index);
         void  position(const int index, const double value);
