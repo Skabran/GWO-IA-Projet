@@ -5,7 +5,7 @@
 class Problem
   {
 	public:
-		Problem();
+		Problem(int dim, double lowerLimit, double upperLimit, int numfunction);
 		~Problem();
 
 		int dimension() const;
