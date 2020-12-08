@@ -11,6 +11,9 @@
 
 using namespace std;
 
+
+
+
 void optimizationAlgorithm::evolution(int a){
     for(unsigned int solutionIndex=0; solutionIndex<_population.size(); solutionIndex++){
         for(unsigned int coordoneeIndex=0; coordoneeIndex<_population.solution().size(); coordoneeIndex++){
@@ -46,13 +49,21 @@ void optimizationAlgorithm::evolution(int a){
     }
 }
 
+
+void optimizationAlgorithm::initialize(){
+    for (unsigned int i=0; i<_population.size(); i++){
+        _population[i].initialize();
+    }
+
+}
+
 void optimizationAlgorithm::evaluate(){
 
     srand(time(0));
 
     double a;
 
-    for(int iteration=0; iteration<_maximum_iterations; iteration++){
+    for(int iteration=0; iteration<_setup.nb_evolution_steps(); iteration++){
 
         a = 2.0 * iteration(2.0/_maximum_iterations);
 
@@ -86,7 +97,7 @@ vector<double>&  optimizationAlgorithm::fitness_values(){
 //        }
 
         for(unsigned int i=0; i<_population.size(); i++){
-            _population[i].fitness(_population.pbm().get_numfunction());
+            _fitness_values[i]=_population[i].fitness(_population.pbm().get_numfunction());
         }
     }
 }

@@ -8,8 +8,7 @@ using namespace std;
 class optimizationAlgorithm
   {
       public:
-      optimizationAlgorithm(const Problem& pbm,const SetUpParams& setup, unsigned int maxIteration); //setup avec un benchmark, un nombre d'agent et un nombre max d'iterations
-		~optimizationAlgorithm();
+      optimizationAlgorithm(const Problem& pbm,const SetUpParams& setup); //setup avec un Probleme et un SetUpParam
 
 		const SetUpParams& setup() const;
 	  	void initialize();
@@ -36,13 +35,12 @@ class optimizationAlgorithm
 		const SetUpParams& _setup;
 		unsigned int _lower_cost; // lower fitness of individuals in population
 
-        unsigned int _maximum_iterations;
         unsigned int _alpha_index;  //Meilleur de cette génération
         double _alpha_score;
         unsigned int _beta_index;
         double _beta_score;
         unsigned int _delta_index;
-        double _delta_score
+        double _delta_score;
 
 
   };
