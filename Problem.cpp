@@ -1,6 +1,13 @@
 #include "Problem.h"
 using namespace std;
 
+Problem::Problem(int dim, double lowerLimit, double upperLimit, int numfunction): _dimension{dim}, _lowerLimit{lowerLimit},
+_upperLimit{upperLimit}, _numfunction{numfunction}
+{}
+
+Problem::~Problem()
+{}
+
 int Problem::get_lowerLimit() const{
     return _lowerLimit;
 }
@@ -19,6 +26,3 @@ int Problem::dimension() const{
 int Problem::get_numfunction() const{
     return _numfunction;
 }
-
-
-
