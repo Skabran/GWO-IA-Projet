@@ -1,7 +1,8 @@
 #include "Solution.h"
 #include <vector>
+using namespace std;
 
-Solution::Solution (const Problem& pbm): _pbm{pbm}, _current_fitness{0}, _solution{0}
+Solution::Solution (const Problem& pbm): _pbm{pbm}, _current_fitness{0.0}, _solution{0.0}
 {}
 Solution::Solution (const Solution& sol): _pbm{sol.pbm()}, _current_fitness{sol.get_fitness()}, _solution{sol.solution()}
 {}
@@ -9,11 +10,20 @@ Solution::~Solution()
 {}
 
 Solution& Solution::operator=  (const Solution& sol)
-{}
+{
+  _solution=sol.solution();
+  _current_fitness=get_fitness();
+  _pbm=pbm();
+  return *this;
+}
 bool Solution::operator== (const Solution& sol) const
-{}
+{
+    return (_solution==sol.solution()&&_current_fitness==get_fitness()&&_pbm==pbm());
+}
 bool Solution::operator!= (const Solution& sol) const
-{}
+{
+    return (_solution!=sol.solution()||_current_fitness!=get_fitness()||_pbm!=pbm());
+}
 
 void Solution::initialize()
 {
@@ -48,4 +58,4 @@ vector<double>& Solution::solution() const{
     return _solution;
 }
 
-using namespace std;
+
