@@ -23,6 +23,13 @@ class Solution
 		double fitness(int numfunction);
 		double get_fitness() const;
 
+    static const int ROSENBROCK;
+    static const int RASTRIGIN;
+    static const int ACKLEY;
+    static const int SCHWEFFEL;
+    static const int SCHAFFER;
+    static const int WEIERSTRASS;
+
 		vector<double>& solution() const;
 
 		double& position(const int index);
@@ -30,7 +37,7 @@ class Solution
 
 
 	private:
-        vector<double> _solution;   //coordonnées de chaques solution. Sa taille est le nb de dimensions
+        vector<double> _solution;   //coordonnï¿½es de chaques solution. Sa taille est le nb de dimensions
         double _current_fitness;
 		const Problem& _pbm;
   };

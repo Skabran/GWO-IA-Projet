@@ -1,6 +1,15 @@
 #include "Solution.h"
 #include <vector>
+#include <random>
+#include <cmath>
 using namespace std;
+
+const int Solution::ROSENBROCK = 1;
+const int Solution::RASTRIGIN = 2;
+const int Solution::ACKLEY = 3;
+const int Solution::SCHWEFFEL = 4;
+const int Solution::SCHAFFER = 5;
+const int Solution::WEIERSTRASS = 6;
 
 Solution::Solution (const Problem& pbm): _pbm{pbm}, _current_fitness{0.0}, _solution{0.0}
 {}
@@ -27,11 +36,66 @@ bool Solution::operator!= (const Solution& sol) const
 
 void Solution::initialize()
 {
-  //INITIALISATION ALEATOIRE DE _solution
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distr( _pbm.get_lowerLimit(), _pbm.get_upperLimit());
+
+    _solution.resize(0);
+
+    for(int n=0; n< _pbm.dimension(); ++n)
+    {
+      _solution[n] = distr(gen);
+    }
 }
 double Solution::fitness(int numfunction)
 {
-  //CALCUL DE FITNESS, LE NUMERO EN PARAMETRE EST LE IDENTIFIANT DE LA FONCTION BENCHMARK
+  if (numfunction == ROSENBROCK)
+  {
+    double sum = 0;
+
+    for (int i = 0; i < _pbm.dimension() - 1 ; ++i)
+    { sum += 100 * pow(( _solution[i+1] - pow( _solution[i],2)),2) + pow(( _solution[i] - 1),2); }
+
+    return sum;
+  }
+  else if(numfunction == RASTRIGIN)
+  {
+    double sum = 0;
+
+    for (int i = 0; i < _pbm.dimension() ; ++i)
+    { sum += 100 * pow( _solution[i],2) - 10*cos(2*M_PI*_solution[i]); }
+
+    return 10*_pbm.dimension() + sum;
+  }
+  else if(numfunction == ACKLEY)
+  {
+    double sum1 = 0;
+    double sum2 = 0;
+
+
+    for (int i = 0; i <  _pbm.dimension(); ++i)
+    { sum1 += pow( _solution[i],2); sum2 += cos(2.0*M_PI*_solution[i]); }
+
+    return - (20.0 * exp ((-0.2) * sqrt(sum1/ _pbm.dimension()))) - exp(sum2/ _pbm.dimension()) + 20.0 + exp(1.0);
+
+  }
+  else if(numfunction == SCHWEFFEL)
+  {
+    double sum = 0;
+
+    for (int i = 0; i < _pbm.dimension(); ++i)
+   { sum +=  _solution[i]*sin( sqrt( abs(_solution[i]) )); }
+
+   return 418.9829*_pbm.dimension() - sum;
+  }
+  else if(numfunction == SCHAFFER)
+  {
+
+  }
+  else if(numfunction == WEIERSTRASS)
+  {
+
+  }
 }
 
 double& Solution::position(const int index)
@@ -57,5 +121,3 @@ double Solution::get_fitness() const{
 vector<double>& Solution::solution() const{
     return _solution;
 }
-
-
