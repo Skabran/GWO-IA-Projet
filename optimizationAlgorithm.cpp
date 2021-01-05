@@ -3,9 +3,7 @@
 #include <vector>
 #include "Problem.h"
 #include "Solution.h"
-
-//pour le générateur aléatoire
-#include <time.h>
+#include <random>       //pour le générateur aléatoire
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -14,11 +12,17 @@ using namespace std;
 
 
 
-void optimizationAlgorithm::evolution(int a){
-    for(unsigned int solutionIndex=0; solutionIndex<_population.size(); solutionIndex++){
+void optimizationAlgorithm::evolution(int a)
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distr(0,1);
+
+    for(unsigned int solutionIndex=0; solutionIndex<_population.size(); solutionIndex++)
+        {
         for(unsigned int coordoneeIndex=0; coordoneeIndex<_population.solution().size(); coordoneeIndex++){
-            double r1 = rand()/RAND_MAX;
-            double r2 = rand()/RAND_MAX;
+            double r1 = distr(gen);
+            double r2 = distr(gen);
 
             double A1=2.0*a*r1-a;
             double C1=2.0*r2;
@@ -26,23 +30,23 @@ void optimizationAlgorithm::evolution(int a){
             double D_alpha= std::abs(C1*_population[_alpha_index][coordoneeIndex]-_population[solutionIndex][coordoneeIndex]);
             double X1 = _population[_alpha_index][coordoneeIndex]-A1*D_alpha;
 
-             r1 = rand()/RAND_MAX;
-             r2 = rand()/RAND_MAX;
+             r1 = distr(gen);
+             r2 = distr(gen);
 
             double A2=2.0*a*r1-a;
             double C2=2.0*r2;
 
-            double D_beta= std::abs(C1*_population{_beta_index][coordoneeIndex]-_population[solutionIndex][coordoneeIndex]);
-            double X2 = _population{_beta_index][coordoneeIndex]-A1*D_Beta;
+            double D_beta= std::abs(C1*_population[_beta_index][coordoneeIndex]-_population[solutionIndex][coordoneeIndex]);
+            double X2 = _population[_beta_index][coordoneeIndex]-A1*D_Beta;
 
-            r1 = rand()/RAND_MAX;
-            r2 = rand()/RAND_MAX;
+            r1 = distr(gen);
+            r2 = distr(gen);
 
             double A3=2.0*a*r1-a;
             double C3=2.0*r2;
 
-            double D_delta= std::abs(C1*_population{_delta_index][coordoneeIndex]-_population[solutionIndex][coordoneeIndex]);
-            double X3 = _population{_delta_index][coordoneeIndex]-A1*D_Delta;
+            double D_delta= std::abs(C1*_population[_delta_index][coordoneeIndex]-_population[solutionIndex][coordoneeIndex]);
+            double X3 = _population[_delta_index][coordoneeIndex]-A1*D_Delta;
 
             _population[solutionIndex][coordoneeIndex]=(X1+X2+X3)/3.0;
         }
@@ -58,11 +62,7 @@ void optimizationAlgorithm::initialize(){
 }
 
 void optimizationAlgorithm::evaluate(){
-
-    srand(time(0));
-
     double a;
-
     for(int iteration=0; iteration<_setup.nb_evolution_steps(); iteration++){
 
         a = 2.0 * iteration(2.0/_maximum_iterations);
@@ -76,10 +76,7 @@ void optimizationAlgorithm::evaluate(){
         {
             _best_solution=_population[_alpha_index];
         }
-
     }
-
-
 }
 
 vector<double>&  optimizationAlgorithm::fitness_values(){
