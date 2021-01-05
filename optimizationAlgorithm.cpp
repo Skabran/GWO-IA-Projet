@@ -23,7 +23,7 @@ void optimizationAlgorithm::evolution(int a){
             double A1=2.0*a*r1-a;
             double C1=2.0*r2;
 
-            double D_alpha= std::abs(C1*_population{_alpha_index][coordoneeIndex]-_population[solutionIndex][coordoneeIndex]);
+            double D_alpha= std::abs(C1*_population[_alpha_index][coordoneeIndex]-_population[solutionIndex][coordoneeIndex]);
             double X1 = _population[_alpha_index][coordoneeIndex]-A1*D_alpha;
 
              r1 = rand()/RAND_MAX;
@@ -71,6 +71,11 @@ void optimizationAlgorithm::evaluate(){
 
         evolution(iteration);
 
+        _best_fitness_over_time[iteration]=_alpha_score;    //On garde le meilleur score de cette itération
+        if(_alpha_score<best_cost()) //Si le score de cette itération est inférieur au meilleur score jamais trouvé
+        {
+            _best_solution=_population[_alpha_index];
+        }
 
     }
 
@@ -78,27 +83,27 @@ void optimizationAlgorithm::evaluate(){
 }
 
 vector<double>&  optimizationAlgorithm::fitness_values(){
-//    double fitness;
-//    double valeur;
-//    double limiteInf;
-//    double limiteSupp;
-//    for(unsigned int solutionIndex=0; solutionIndex<_population.size(); solutionIndex++){
-//        //Si un loup est en dehors des frontières on le remet à la limite pour chaque coordonnées
-//        for(unsigned int coordoneeIndex=0; coordoneeIndex<_population[solutionIndex].size(); coordoneeIndex++){
-//            valeur=_population[solutionIndex][coordoneeIndex];
-//            limiteInf = _population[solutionIndex]._pbm.LowerLimit;
-//            limiteSupp = _population[solutionIndex]._pbm.UpperLimit
-//            if(valeur < limiteInf){
-//                _population[solutionIndex][coordoneeIndex]= limiteInf;
-//            }
-//            if(valeur> limiteSupp){
-//                _population[solutionIndex][coordoneeIndex]=limiteSupp;
-//            }
-//        }
 
+        //calcule la fonction objectif de chaque solutions
         for(unsigned int i=0; i<_population.size(); i++){
             _fitness_values[i]=_population[i].fitness(_population.pbm().get_numfunction());
+
+
+
         }
+
+    //Met a jour Alpha, Beta et Delta
+    if(_fitness_values[i] < _alpha_score){
+        _alpha_score=_fitness_values[i];    //Mise a jour du score d'Alpha
+        _alpha_index=i;                     //Mise a jour de la position d'Alpha
+    }
+    else if(_fitness_values[i] > _alpha_score) && (_fitness_values[i]<_beta_score){
+        _beta_score=_fitness_values[i];    //Mise a jour du score de Beta
+        _beta_index=i;                    //Mise a jour de la position de Beta
+    }
+    else if(_fitness_values[i] > _alpha_score) && (_fitness_values[i]>_beta_score) && (_fitness_values[i]<_delta_score){
+        _delta_score=_fitness_values[i];    //Mise a jour du score de Delta
+        _delta_index=i;                    //Mise a jour de la position de Delta
     }
 }
 
