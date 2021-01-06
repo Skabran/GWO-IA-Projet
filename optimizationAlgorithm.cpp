@@ -16,19 +16,14 @@ optimizationAlgorithm::optimizationAlgorithm(Problem& pbm, const SetUpParams& se
     _alpha_index{0}, _alpha_score{INT_MAX}, _beta_index{0}, _beta_score{INT_MAX}, _delta_index{0}, _delta_score{INT_MAX},
     _fitness_values{}, _best_fitness_over_time{}, _best_cost{INT_MAX},_best_solution{pbm}
 {
-    cout<<"balise2.1"<<endl;
     _fitness_values.resize(setup.population_size());
-    cout<<"balise2.2"<<endl;
     _best_fitness_over_time.resize(setup.nb_evolution_steps());
-    cout<<"balise2.3"<<endl;
     for(int i=0; i<setup.population_size(); i++)
     {
         _population.resize(setup.population_size());
         _population[i] = new Solution{pbm};
     }
-    cout<<"balise2.4"<<endl;
     initialize();
-    cout<<"balise2.5"<<endl;
 }
 
 optimizationAlgorithm::~optimizationAlgorithm()
@@ -44,6 +39,7 @@ void optimizationAlgorithm::lanceEtAffiche()
 {
     for(unsigned int i=0; i<_setup.independent_runs(); i++)
     {
+        cout<<"balise3."<<i<<endl;
         evaluate();
         cout<<"la meilleure fitness est " << _best_cost << endl;
         initialize();
@@ -100,7 +96,6 @@ void optimizationAlgorithm::initialize()
 {
     for (unsigned int i=0; i<_population.size(); i++)
     {
-        cout<<"balise 2.4."<<i<<endl;
         _population[i]->initialize();
     }
 
@@ -108,8 +103,10 @@ void optimizationAlgorithm::initialize()
 
 void optimizationAlgorithm::evaluate()
 {
+    cout<<"balise3.x.0"<<endl;
     for(unsigned int iteration=0; iteration<_setup.nb_evolution_steps(); iteration++) //_setup-> ? car &
     {
+        //cout<<"balise3.x.0."<<iteration<<endl;
         _fitness_values=fitness_values();
 
         evolution(iteration);
@@ -121,6 +118,7 @@ void optimizationAlgorithm::evaluate()
             _best_solution=*_population[_alpha_index];
         }
     }
+    cout<<"balise3.x.1"<<endl;
 }
 
 vector<double>&  optimizationAlgorithm::fitness_values()

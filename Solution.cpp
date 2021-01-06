@@ -1,6 +1,4 @@
 #include "Solution.h"
-#include <iostream>
-#include <fstream>
 #include <vector>
 #include <random>
 #ifndef M_PI
@@ -43,15 +41,11 @@ bool Solution::operator!= (const Solution& sol) const
 
 void Solution::initialize()
 {
-    cout<<"balise 2.4.x.0"<<endl;
     default_random_engine gen{static_cast<long unsigned int>(time(0))};
     uniform_real_distribution<> distr(_pbm.get_lowerLimit(), _pbm.get_upperLimit());
-    cout<<"balise 2.4.x.1"<<endl;
     _solution.resize(0);
-    cout<<"balise 2.4.x.2"<<endl;
     for(int n=0; n< _pbm.dimension(); ++n)
     {
-        cout<<"balise 2.4.x.2."<<n<<endl;
         _solution.push_back(distr(gen));
     }
 }
