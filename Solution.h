@@ -9,11 +9,11 @@ using namespace std;
 class Solution
   {
 	public:
-		Solution (const Problem& pbm);
-		Solution (const Solution& sol);
+		Solution (Problem& pbm);
+		Solution (Solution& sol);
 		~Solution();
 
-		const Problem& pbm() const;
+		Problem& pbm() const;
 
 		Solution& operator=  (const Solution& sol);
 		bool operator== (const Solution& sol) const;
@@ -30,7 +30,7 @@ class Solution
     static const int SCHAFFER;
     static const int WEIERSTRASS;
 
-		vector<double>& solution() const;
+		vector<double> solution() const;
 
 		double& position(const int index);
         void  position(const int index, const double value);
@@ -39,6 +39,6 @@ class Solution
 	private:
         vector<double> _solution;   //coordonn�es de chaques solution. Sa taille est le nb de dimensions
         double _current_fitness;
-		const Problem& _pbm;
+		Problem& _pbm;
   };
 #endif // SOLUTION_H

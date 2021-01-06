@@ -8,6 +8,25 @@ _upperLimit{upperLimit}, _numfunction{numfunction}
 Problem::~Problem()
 {}
 
+Problem& Problem::operator= (const Problem& pbm)
+{
+    _dimension = pbm.dimension();
+    _lowerLimit = pbm.get_lowerLimit();
+    _upperLimit = pbm.get_upperLimit();
+    _numfunction = pbm.get_numfunction();
+}
+
+bool Problem::operator== (const Problem& pbm)
+{
+    return (_dimension == pbm.dimension()) && (_lowerLimit == pbm.get_lowerLimit()) && (_upperLimit == pbm.get_upperLimit()) && (_numfunction == pbm.get_numfunction());
+}
+
+bool Problem::operator!= (const Problem& pbm)
+{
+    return (_dimension != pbm.dimension()) || (_lowerLimit != pbm.get_lowerLimit()) || (_upperLimit != pbm.get_upperLimit()) || (_numfunction != pbm.get_numfunction());
+}
+
+
 int Problem::get_lowerLimit() const{
     return _lowerLimit;
 }

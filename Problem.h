@@ -8,6 +8,10 @@ class Problem
 		Problem(int dim, double lowerLimit, double upperLimit, int numfunction);
 		~Problem();
 
+		Problem& operator= (const Problem& pbm);
+		bool operator== (const Problem& pbm);
+		bool operator!= (const Problem& pbm);
+
 		int dimension() const;
 		int get_numfunction() const;
 		int get_lowerLimit() const;

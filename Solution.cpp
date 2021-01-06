@@ -11,9 +11,9 @@ const int Solution::SCHWEFFEL = 4;
 const int Solution::SCHAFFER = 5;
 const int Solution::WEIERSTRASS = 6;
 
-Solution::Solution (const Problem& pbm): _pbm{pbm}, _current_fitness{0.0}, _solution{0.0}
+Solution::Solution (Problem& pbm): _pbm{pbm}, _current_fitness{0.0}, _solution{0.0}
 {}
-Solution::Solution (const Solution& sol): _pbm{sol.pbm()}, _current_fitness{sol.get_fitness()}, _solution{sol.solution()}
+Solution::Solution (Solution& sol): _pbm{sol.pbm()}, _current_fitness{sol.get_fitness()}, _solution{sol.solution()}
 {}
 Solution::~Solution()
 {}
@@ -133,7 +133,7 @@ void  Solution::position(const int index, const double value)
   _solution[index] = value;
 }
 
-const Problem& Solution::pbm() const{
+Problem& Solution::pbm() const{
     return _pbm;
 }
 
@@ -143,6 +143,6 @@ double Solution::get_fitness() const{
 }
 
 
-vector<double>& Solution::solution() const{
+vector<double> Solution::solution() const{
     return _solution;
 }
