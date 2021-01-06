@@ -12,7 +12,7 @@ const int Solution::SCHWEFFEL = 4;
 const int Solution::SCHAFFER = 5;
 const int Solution::WEIERSTRASS = 6;
 
-Solution::Solution (Problem& pbm): _pbm{pbm}, _current_fitness{0.0}, _solution{0.0}
+Solution::Solution (Problem& pbm): _pbm{pbm}, _current_fitness{INT_MAX}, _solution{0}
 {}
 Solution::Solution (Solution& sol): _pbm{sol.pbm()}, _current_fitness{sol.get_fitness()}, _solution{sol.solution()}
 {}
@@ -56,7 +56,7 @@ double Solution::fitness(int numfunction)
     for (int i = 0; i < _pbm.dimension() - 1 ; ++i)
     { sum += 100 * pow(( _solution[i+1] - pow( _solution[i],2)),2) + pow(( _solution[i] - 1),2); }
 
-    return sum;
+      _current_fitness = sum;
   }
   else if(numfunction == RASTRIGIN)
   {
@@ -65,7 +65,7 @@ double Solution::fitness(int numfunction)
     for (int i = 0; i < _pbm.dimension() ; ++i)
     { sum += 100 * pow( _solution[i],2) - 10*cos(2*M_PI*_solution[i]); }
 
-    return 10*_pbm.dimension() + sum;
+      _current_fitness = 10*_pbm.dimension() + sum;
   }
   else if(numfunction == ACKLEY)
   {
@@ -76,7 +76,7 @@ double Solution::fitness(int numfunction)
     for (int i = 0; i <  _pbm.dimension(); ++i)
     { sum1 += pow( _solution[i],2); sum2 += cos(2.0*M_PI*_solution[i]); }
 
-    return - (20.0 * exp ((-0.2) * sqrt(sum1/ _pbm.dimension()))) - exp(sum2/ _pbm.dimension()) + 20.0 + exp(1.0);
+      _current_fitness = - (20.0 * exp ((-0.2) * sqrt(sum1/ _pbm.dimension()))) - exp(sum2/ _pbm.dimension()) + 20.0 + exp(1.0);
 
   }
   else if(numfunction == SCHWEFFEL)
@@ -86,7 +86,7 @@ double Solution::fitness(int numfunction)
     for (int i = 0; i < _pbm.dimension(); ++i)
    { sum +=  _solution[i]*sin( sqrt( abs(_solution[i]) )); }
 
-   return 418.9829*_pbm.dimension() - sum;
+     _current_fitness = 418.9829*_pbm.dimension() - sum;
   }
   else if(numfunction == SCHAFFER)
   {
@@ -95,7 +95,7 @@ double Solution::fitness(int numfunction)
     for (int i = 0; i < _pbm.dimension() - 1 ; ++i)
     { sum += 0.5 + ( sin((pow(pow(_solution[i+1],2) - pow(_solution[i],2),2))) - 0.5 ) / ( 1 + 0.001*pow((pow(_solution[i+1],2) + pow(_solution[i],2)),2)); }
 
-    return sum;
+      _current_fitness = sum;
   }
   else if(numfunction == WEIERSTRASS)
   {
@@ -119,8 +119,10 @@ double Solution::fitness(int numfunction)
           sum3 += pow(0.5,k) * cos(2.0 * M_PI * pow(3,k) * 0.5);
       }
 
-    return sum1 -  _pbm.dimension()*sum3;
+      _current_fitness = sum1 -  _pbm.dimension()*sum3;
   }
+
+  return   _current_fitness;
 }
 
 double& Solution::position(const int index)
