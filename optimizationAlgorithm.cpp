@@ -9,14 +9,14 @@
 
 using namespace std;
 
-optimizationAlgorithm::optimizationAlgorithm(const Problem& pbm,const SetUpParams& setup): _setup{setup}, _population{},
+optimizationAlgorithm::optimizationAlgorithm(const Problem& pbm, const SetUpParams& setup): _setup{setup}, _population{},
 _alpha_index{0}, _alpha_score{INT_MAX}, _beta_index{0}, _beta_score{INT_MAX}, _delta_index{0}, _delta_score{INT_MAX},
 _fitness_values{}, _best_fitness_over_time{}, _best_solution{pbm}
 
 {
-    _fitness_values.resize(setup.nb_population_size());
-    _best_fitness_over_time(setup.nb_evolution_step());
-    _population.resize(setup.nb_population_size());
+    _fitness_values.resize(_setup.population_size());
+    _best_fitness_over_time(_setup.nb_evolution_steps());
+    _population.resize(_setup.population_size());
     initialize();
 }
 
@@ -137,18 +137,5 @@ double optimizationAlgorithm::fitness(const unsigned int index) const
 {
     return _fitness_values[index];
 }
-
-//A voir avec le prof
-unsigned int optimizationAlgorithm::lower_cost() const
-{
-    return _lower_cost;
-}
-
-unsigned int optimizationAlgorithm::upper_cost() const
-{
-    return _upper_cost;
-}
-
-
 
 
