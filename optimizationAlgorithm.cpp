@@ -6,6 +6,7 @@
 #include <random>       //pour le générateur aléatoire
 #include <stdio.h>
 #include <stdlib.h>
+#include <climits>
 
 using namespace std;
 
@@ -94,7 +95,6 @@ void optimizationAlgorithm::evaluate()
 
 vector<double>&  optimizationAlgorithm::fitness_values()
 {
-
     //calcule la fonction objectif de chaque solutions
     for(unsigned int i=0; i<_population.size(); i++)
     {
