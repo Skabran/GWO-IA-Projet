@@ -24,19 +24,22 @@ class optimizationAlgorithm
 		double fitness(const unsigned int index) const;
 
 
-		double best_cost() const; //Meilleur ever
-		Solution& best_solution() const;
+		double best_cost() const; //Meilleure score ever
+		Solution& best_solution() const; //Meilleure solution ever
 
 		void evolution(int iter); /*makes an evolution step*/
 
 	private:
 		vector<Solution*> _population;     // individuals in population
 		vector<double> _fitness_values;    //la fitness de chaque individu (Solution)
+		vector<double> _best_fitness_over_time; //Tableau gardant la meilleur fitness a chaque iteration
+		Solution _best_solution; //Meilleure solution trouvée sur l'ensemble des itérations
 		const SetUpParams& _setup;
 		unsigned int _lower_cost;          // lower fitness of individuals in population
+        unsigned int _upper_cost;           // higher fitness of individuals in population
 
-        unsigned int _alpha_index;         //Meilleur de cette génération
-        double _alpha_score;
+        unsigned int _alpha_index;         // Meilleur de cette génération
+        double _alpha_score;               // lower fitness of individuals in population
         unsigned int _beta_index;
         double _beta_score;
         unsigned int _delta_index;
