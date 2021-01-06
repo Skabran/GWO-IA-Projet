@@ -21,7 +21,11 @@ optimizationAlgorithm::optimizationAlgorithm(Problem& pbm, const SetUpParams& se
     cout<<"balise2.2"<<endl;
     _best_fitness_over_time.resize(setup.nb_evolution_steps());
     cout<<"balise2.3"<<endl;
-    _population.resize(setup.population_size());
+    for(int i=0; i<setup.population_size(); i++)
+    {
+        _population.resize(setup.population_size());
+        _population[i] = new Solution{pbm};
+    }
     cout<<"balise2.4"<<endl;
     initialize();
     cout<<"balise2.5"<<endl;
