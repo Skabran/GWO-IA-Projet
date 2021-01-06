@@ -41,8 +41,8 @@ bool Solution::operator!= (const Solution& sol) const
 
 void Solution::initialize()
 {
-    std::default_random_engine gen{static_cast<long unsigned int>(time(0))};
-    std::uniform_real_distribution<> distr(_pbm.get_lowerLimit(), _pbm.get_upperLimit());
+    default_random_engine gen{static_cast<long unsigned int>(time(0))};
+    uniform_real_distribution<> distr(_pbm.get_lowerLimit(), _pbm.get_upperLimit());
 
     _solution.resize(0);
 

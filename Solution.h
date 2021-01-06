@@ -37,7 +37,7 @@ public:
 
 
 private:
-    vector<double> _solution;   //coordonn�es de chaques solution. Sa taille est le nb de dimensions
+    vector<double> _solution;   //coordonnees de chaques solution. Sa taille est le nb de dimensions
     double _current_fitness;
     Problem& _pbm;
 };
