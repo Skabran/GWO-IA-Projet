@@ -22,8 +22,8 @@ _upperLimit{0.0}, _numfunction{numfunction}
     _lowerLimit=-100.0;
     _upperLimit=100.0;
     case 6:
-    _lowerLimit=-5;
-    _upperLimit=10;
+    _lowerLimit=-2.0;
+    _upperLimit=2.0;
    }
 
 }

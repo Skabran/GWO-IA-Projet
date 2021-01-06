@@ -13,8 +13,8 @@
 using namespace std;
 
 optimizationAlgorithm::optimizationAlgorithm(Problem& pbm, const SetUpParams& setup): _setup{setup}, _population{},
-_alpha_index{0}, _alpha_score{INT_MAX}, _beta_index{0}, _beta_score{INT_MAX}, _delta_index{0}, _delta_score{INT_MAX},
-_fitness_values{}, _best_fitness_over_time{}, _best_cost{INT_MAX},_best_solution{pbm}
+    _alpha_index{0}, _alpha_score{INT_MAX}, _beta_index{0}, _beta_score{INT_MAX}, _delta_index{0}, _delta_score{INT_MAX},
+    _fitness_values{}, _best_fitness_over_time{}, _best_cost{INT_MAX},_best_solution{pbm}
 {
     _fitness_values.resize(setup.population_size());
     _best_fitness_over_time.resize(setup.nb_evolution_steps());
@@ -27,14 +27,12 @@ optimizationAlgorithm::~optimizationAlgorithm() {}
 
 void optimizationAlgorithm::lanceEtAffiche()
 {
-    cout<<"salut";  //Test pour voir si ça plante avant
-    for(unsigned int i=0; i<_setup.independent_runs();i++)
+    for(unsigned int i=0; i<_setup.independent_runs(); i++)
     {
         evaluate();
         cout<<"la meilleur fitness est " << _best_cost << endl;
         initialize();
     }
-
 }
 
 void optimizationAlgorithm::evolution(int iter)
