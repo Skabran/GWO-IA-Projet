@@ -31,7 +31,13 @@ optimizationAlgorithm::optimizationAlgorithm(Problem& pbm, const SetUpParams& se
     cout<<"balise2.5"<<endl;
 }
 
-optimizationAlgorithm::~optimizationAlgorithm() {}
+optimizationAlgorithm::~optimizationAlgorithm()
+{
+    for(unsigned int i=0; i<_setup.population_size(); i++)
+    {
+        delete _population[i];
+    }
+}
 
 
 void optimizationAlgorithm::lanceEtAffiche()
