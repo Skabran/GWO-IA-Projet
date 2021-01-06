@@ -36,9 +36,10 @@ class optimizationAlgorithm
 		Solution _best_solution; //Meilleure solution trouvée sur l'ensemble des itérations
 		const SetUpParams& _setup;
 		unsigned int _lower_cost;          // lower fitness of individuals in population
+        unsigned int _upper_cost;           // higher fitness of individuals in population
 
-        unsigned int _alpha_index;         //Meilleur de cette génération
-        double _alpha_score;                //lower fitness of individuals in population
+        unsigned int _alpha_index;         // Meilleur de cette génération
+        double _alpha_score;               // lower fitness of individuals in population
         unsigned int _beta_index;
         double _beta_score;
         unsigned int _delta_index;
