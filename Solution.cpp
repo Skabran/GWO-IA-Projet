@@ -2,6 +2,7 @@
 #include <vector>
 #include <random>
 #include <cmath>
+#include <ctime>
 using namespace std;
 
 const int Solution::ROSENBROCK = 1;
@@ -36,15 +37,14 @@ bool Solution::operator!= (const Solution& sol) const
 
 void Solution::initialize()
 {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distr( _pbm.get_lowerLimit(), _pbm.get_upperLimit());
+    std::default_random_engine gen{static_cast<long unsigned int>(time(0))};
+    std::uniform_real_distribution<> distr(_pbm.get_lowerLimit(), _pbm.get_upperLimit());
 
     _solution.resize(0);
 
     for(int n=0; n< _pbm.dimension(); ++n)
     {
-      _solution[n] = distr(gen);
+      _solution.push_back(distr(gen));
     }
 }
 double Solution::fitness(int numfunction)
