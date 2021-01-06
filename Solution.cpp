@@ -3,6 +3,7 @@
 #include <random>
 #include <cmath>
 #include <ctime>
+#include <climits>
 using namespace std;
 
 const int Solution::ROSENBROCK = 1;
