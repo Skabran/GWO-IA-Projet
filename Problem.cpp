@@ -1,9 +1,32 @@
 #include "Problem.h"
 using namespace std;
 
-Problem::Problem(int dim, double lowerLimit, double upperLimit, int numfunction): _dimension{dim}, _lowerLimit{lowerLimit},
-_upperLimit{upperLimit}, _numfunction{numfunction}
-{}
+Problem::Problem(int dim, int numfunction): _dimension{dim}, _lowerLimit{0.0},
+_upperLimit{0.0}, _numfunction{numfunction}
+{
+   switch(numfunction)
+   {
+   case 1:
+    _lowerLimit=-5.0;
+    _upperLimit=10.0;
+    case 2:
+    _lowerLimit=-5.12;
+    _upperLimit=5.12;
+    case 3:
+    _lowerLimit=-32.0;
+    _upperLimit=32.0;
+    case 4:
+    _lowerLimit=-500.0;
+    _upperLimit=500.0;
+    case 5:
+    _lowerLimit=-100.0;
+    _upperLimit=100.0;
+    case 6:
+    _lowerLimit=-5;
+    _upperLimit=10;
+   }
+
+}
 
 Problem::~Problem()
 {}

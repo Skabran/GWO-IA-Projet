@@ -26,21 +26,24 @@
 	"Solution.h"
 	<vector>
 
-1607066950 source:c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\main.cpp
+1609960128 source:c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\main.cpp
 	<iostream>
 	<fstream>
 	<cmath>
 	<vector>
-
-1609948816 source:c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\problem.cpp
+	"optimizationAlgorithm.h"
 	"Problem.h"
-
-1609948816 c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\problem.h
-
-1607446476 source:c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\setupparams.cpp
 	"SetUpParams.h"
 
-1606179738 c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\setupparams.h
+1609960284 source:c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\problem.cpp
+	"Problem.h"
+
+1609960128 c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\problem.h
+
+1609957271 source:c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\setupparams.cpp
+	"SetUpParams.h"
+
+1609957271 c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\setupparams.h
 
 1609949930 source:c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\solution.cpp
 	"Solution.h"
@@ -52,5 +55,21 @@
 
 1609948816 c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\solution.h
 	"Problem.h"
+	<vector>
+
+1609950970 source:c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\optimizationalgorithm.cpp
+	"optimizationAlgorithm.h"
+	<cmath>
+	<vector>
+	"Problem.h"
+	"Solution.h"
+	<random>
+	<stdio.h>
+	<stdlib.h>
+	<climits>
+
+1609951434 c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\optimizationalgorithm.h
+	"Solution.h"
+	"SetUpParams.h"
 	<vector>
 

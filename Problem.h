@@ -5,7 +5,7 @@
 class Problem
   {
 	public:
-		Problem(int dim, double lowerLimit, double upperLimit, int numfunction);
+		Problem(int dim, int numfunction);
 		~Problem();
 
 		Problem& operator= (const Problem& pbm);

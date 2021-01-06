@@ -14,6 +14,8 @@ class SetUpParams
 
 	public:
 		SetUpParams ();
+        SetUpParams (const unsigned int nb_run, const unsigned int nb_evolution,
+                     const unsigned int pop_size, const unsigned int sol_size);
 
 		const unsigned int   independent_runs() const;
 		const unsigned int   nb_evolution_steps() const;

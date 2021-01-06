@@ -5,6 +5,13 @@ using namespace std;
 SetUpParams::SetUpParams (): _independent_runs{0}, _nb_evolution_steps{0}, _population_size{0}, _solution_size{0}
 {}
 
+SetUpParams::SetUpParams (const unsigned int nb_run, const unsigned int nb_evolution,
+                          const unsigned int pop_size, const unsigned int sol_size):
+    _independent_runs{nb_run}, _nb_evolution_steps{nb_evolution},
+    _population_size{pop_size}, _solution_size{sol_size}
+{}
+
+
 SetUpParams::~SetUpParams ()
 {}
 
