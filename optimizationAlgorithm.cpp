@@ -1,4 +1,6 @@
 #include "optimizationAlgorithm.h"
+#include <iostream>
+#include <fstream>
 #include <cmath>
 #include <vector>
 #include "Problem.h"
@@ -20,12 +22,26 @@ _fitness_values{}, _best_fitness_over_time{}, _best_cost{INT_MAX},_best_solution
     initialize();
 }
 
+optimizationAlgorithm::~optimizationAlgorithm() {}
+
+
+void optimizationAlgorithm::lanceEtAffiche()
+{
+    cout<<"salut";  //Test pour voir si ça plante avant
+    for(unsigned int i=0; i<_setup.independent_runs();i++)
+    {
+        evaluate();
+        cout<<"la meilleur fitness est " << _best_cost << endl;
+        initialize();
+    }
+
+}
 
 void optimizationAlgorithm::evolution(int iter)
 {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distr(0,1);
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> distr(0,1);
 
     double a = 2.0 * iter*(2.0/_setup.nb_evolution_steps());
 
@@ -39,7 +55,7 @@ void optimizationAlgorithm::evolution(int iter)
             double A1=2.0*a*r1-a;
             double C1=2.0*r2;
 
-            double D_alpha= std::abs((C1*_population[_alpha_index]->position(coordoneeIndex))-_population[solutionIndex]->position(coordoneeIndex));
+            double D_alpha= abs((C1*_population[_alpha_index]->position(coordoneeIndex))-_population[solutionIndex]->position(coordoneeIndex));
             double X1 = _population[_alpha_index]->position(coordoneeIndex)-A1*D_alpha;
 
             r1 = distr(gen);
@@ -48,7 +64,7 @@ void optimizationAlgorithm::evolution(int iter)
             double A2=2.0*a*r1-a;
             double C2=2.0*r2;
 
-            double D_beta= std::abs(C2*_population[_beta_index]->position(coordoneeIndex)-_population[solutionIndex]->position(coordoneeIndex));
+            double D_beta= abs(C2*_population[_beta_index]->position(coordoneeIndex)-_population[solutionIndex]->position(coordoneeIndex));
             double X2 = _population[_beta_index]->position(coordoneeIndex)-A2*D_beta;
 
             r1 = distr(gen);
@@ -57,7 +73,7 @@ void optimizationAlgorithm::evolution(int iter)
             double A3=2.0*a*r1-a;
             double C3=2.0*r2;
 
-            double D_delta= std::abs(C3*_population[_delta_index]->position(coordoneeIndex)-_population[solutionIndex]->position(coordoneeIndex));
+            double D_delta= abs(C3*_population[_delta_index]->position(coordoneeIndex)-_population[solutionIndex]->position(coordoneeIndex));
             double X3 = _population[_delta_index]->position(coordoneeIndex)-A3*D_delta;
 
             double resultat=(X1+X2+X3)/3.0;

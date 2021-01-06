@@ -9,22 +9,17 @@ class optimizationAlgorithm
   {
       public:
         optimizationAlgorithm(Problem& pbm,const SetUpParams& setup); //setup avec un Probleme et un SetUpParam
-
+        ~optimizationAlgorithm();
+        void lanceEtAffiche();
 		const SetUpParams& setup() const;
 	  	void initialize();
-
-		// creates a array with fitness of all solutions in MyAlgorithm and its position in the MyAlgorithm
-        void evaluate();
-
+        void evaluate(); // creates a array with fitness of all solutions in MyAlgorithm and its position in the MyAlgorithm
 	 	const vector<Solution*>& solutions() const;
 		Solution& solution(const unsigned int index) const;
         vector<double>&  fitness_values();
 		double fitness(const unsigned int index) const;
-
-
 		double best_cost() const; //Meilleure score ever
 		Solution& best_solution() const; //Meilleure solution ever
-
 		void evolution(int iter); /*makes an evolution step*/
 
 	private:
