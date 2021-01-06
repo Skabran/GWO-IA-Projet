@@ -11,7 +11,7 @@ using namespace std;
 
 optimizationAlgorithm::optimizationAlgorithm(const Problem& pbm, const SetUpParams& setup): _setup{setup}, _population{},
 _alpha_index{0}, _alpha_score{INT_MAX}, _beta_index{0}, _beta_score{INT_MAX}, _delta_index{0}, _delta_score{INT_MAX},
-_fitness_values{}, _best_fitness_over_time{}, _best_solution{&pbm}
+_fitness_values{}, _best_fitness_over_time{}, _best_solution{}
 
 {
     _fitness_values.resize(_setup.population_size());

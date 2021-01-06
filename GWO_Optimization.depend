@@ -42,3 +42,15 @@
 
 1606179738 c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\setupparams.h
 
+1609949930 source:c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\solution.cpp
+	"Solution.h"
+	<vector>
+	<random>
+	<cmath>
+	<ctime>
+	<climits>
+
+1609948816 c:\users\skabran\documents\kevin\fac\mulhouse_2020_2021_l3\cours\ia\the dogo algorithm\gwo-ia-projet\solution.h
+	"Problem.h"
+	<vector>
+
