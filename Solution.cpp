@@ -90,11 +90,36 @@ double Solution::fitness(int numfunction)
   }
   else if(numfunction == SCHAFFER)
   {
+    double sum = 0;
 
+    for (int i = 0; i < _pbm.dimension() - 1 ; ++i)
+    { sum += 0.5 + ( sin((pow(pow(_solution[i+1],2) - pow(_solution[i],2),2))) - 0.5 ) / ( 1 + 0.001*pow((pow(_solution[i+1],2) + pow(_solution[i],2)),2)); }
+
+    return sum;
   }
   else if(numfunction == WEIERSTRASS)
   {
+    double sum1 = 0;
+    double sum2 = 0;
+    double sum3 = 0;
 
+    for (int i = 0; i <  _pbm.dimension(); ++i)
+    {
+      for (int k = 0; k < 20; ++k)
+      {
+          sum2 += pow(0.5,k) * cos(2.0 * M_PI * pow(3,k) * (_solution[i] + 0.5));
+      }
+
+      sum1 += sum2;
+      sum2 = 0;
+    }
+
+    for (int k = 0; k < 20; ++k)
+      {
+          sum3 += pow(0.5,k) * cos(2.0 * M_PI * pow(3,k) * 0.5);
+      }
+
+    return sum1 -  _pbm.dimension()*sum3;
   }
 }
 
