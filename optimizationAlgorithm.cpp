@@ -9,14 +9,13 @@
 
 using namespace std;
 
-optimizationAlgorithm::optimizationAlgorithm(const Problem& pbm, const SetUpParams& setup): _setup{setup}, _population{},
+optimizationAlgorithm::optimizationAlgorithm(Problem& pbm, const SetUpParams& setup): _setup{setup}, _population{},
 _alpha_index{0}, _alpha_score{INT_MAX}, _beta_index{0}, _beta_score{INT_MAX}, _delta_index{0}, _delta_score{INT_MAX},
-_fitness_values{}, _best_fitness_over_time{}, _best_solution{}
-
+_fitness_values{}, _best_fitness_over_time{}, _best_cost{INT_MAX},_best_solution{pbm}
 {
-    _fitness_values.resize(_setup.population_size());
-    _best_fitness_over_time.resize(_setup.nb_evolution_steps());
-    _population.resize(_setup.population_size());
+    _fitness_values.resize(setup.population_size());
+    _best_fitness_over_time.resize(setup.nb_evolution_steps());
+    _population.resize(setup.population_size());
     initialize();
 }
 
@@ -87,6 +86,7 @@ void optimizationAlgorithm::evaluate()
         _best_fitness_over_time[iteration]=_alpha_score;    //On garde le meilleur score de cette itération
         if(_alpha_score<best_cost()) //Si le score de cette itération est inférieur au meilleur score jamais trouvé
         {
+            _best_cost=_alpha_score;
             _best_solution=*_population[_alpha_index];
         }
     }
@@ -122,6 +122,11 @@ vector<double>&  optimizationAlgorithm::fitness_values()
     return _fitness_values;
 }
 
+
+double optimizationAlgorithm::best_cost() const
+{
+    return _best_cost;
+}
 
 const vector<Solution*>& optimizationAlgorithm::solutions() const
 {
