@@ -41,7 +41,7 @@ void optimizationAlgorithm::lanceEtAffiche()
     {
         cout<<"balise3."<<i<<endl;
         evaluate();
-        cout<<"la meilleure fitness est " << _best_cost << endl;
+        cout<<"la meilleure fitness est " << _best_cost << " sur le benchmark N° "<< _population[0]->pbm().get_numfunction()<< endl;
         initialize();
     }
 }

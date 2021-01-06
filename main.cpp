@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
     cout<<"balise0"<<endl;
-    SetUpParams setup{1, 2000000, 30, 30};
+    SetUpParams setup{1, 66665, 30, 30};
     cout<<"balise1"<<endl;
     Problem prob{30, 1};
     cout<<"balise2"<<endl;
