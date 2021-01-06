@@ -9,7 +9,16 @@
 
 using namespace std;
 
+optimizationAlgorithm::optimizationAlgorithm(const Problem& pbm,const SetUpParams& setup): _setup{setup}, _population{},
+_alpha_index{0}, _alpha_score{INT_MAX}, _beta_index{0}, _beta_score{INT_MAX}, _delta_index{0}, _delta_score{INT_MAX},
+_fitness_values{}, _best_fitness_over_time{}, _best_solution{pbm}
 
+{
+    _fitness_values.resize(setup.nb_population_size());
+    _best_fitness_over_time(setup.nb_evolution_step());
+    _population.resize(setup.nb_population_size());
+    initialize();
+}
 
 
 void optimizationAlgorithm::evolution(int iter)
@@ -89,7 +98,7 @@ vector<double>&  optimizationAlgorithm::fitness_values()
     //calcule la fonction objectif de chaque solutions
     for(unsigned int i=0; i<_population.size(); i++)
     {
-        _fitness_values[i]=_population[i]->fitness(_population[i]->pbm().get_numfunction()); //pbm()-> ?
+        _fitness_values[i]=_population[i]->fitness(_population[i]->pbm().get_numfunction());
 
 
         //Met a jour Alpha, Beta et Delta

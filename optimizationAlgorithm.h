@@ -8,7 +8,7 @@ using namespace std;
 class optimizationAlgorithm
   {
       public:
-      optimizationAlgorithm(const Problem& pbm,const SetUpParams& setup); //setup avec un Probleme et un SetUpParam
+        optimizationAlgorithm(const Problem& pbm,const SetUpParams& setup); //setup avec un Probleme et un SetUpParam
 
 		const SetUpParams& setup() const;
 	  	void initialize();
@@ -17,8 +17,6 @@ class optimizationAlgorithm
         void evaluate();
 
 	 	const vector<Solution*>& solutions() const;
-		unsigned int upper_cost() const;
-		unsigned int lower_cost() const;
 		Solution& solution(const unsigned int index) const;
         vector<double>&  fitness_values();
 		double fitness(const unsigned int index) const;
@@ -35,8 +33,6 @@ class optimizationAlgorithm
 		vector<double> _best_fitness_over_time; //Tableau gardant la meilleur fitness a chaque iteration
 		Solution _best_solution; //Meilleure solution trouvée sur l'ensemble des itérations
 		const SetUpParams& _setup;
-		unsigned int _lower_cost;          // lower fitness of individuals in population
-        unsigned int _upper_cost;           // higher fitness of individuals in population
 
         unsigned int _alpha_index;         // Meilleur de cette génération
         double _alpha_score;               // lower fitness of individuals in population
