@@ -18,8 +18,8 @@ class optimizationAlgorithm
 		Solution& solution(const unsigned int index) const;
         vector<double>&  fitness_values();
 		double fitness(const unsigned int index) const;
-		double best_cost() const; //Meilleure score ever
-		Solution& best_solution() const; //Meilleure solution ever
+		double best_cost() const; //Meilleure score depuis le debut
+		Solution& best_solution() const; //Meilleure solution depuis le début
 		void evolution(int iter); /*makes an evolution step*/
 
 	private:

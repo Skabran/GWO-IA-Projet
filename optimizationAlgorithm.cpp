@@ -6,6 +6,7 @@
 #include "Problem.h"
 #include "Solution.h"
 #include <random>       //pour le générateur aléatoire
+#include <ctime>
 #include <stdio.h>
 #include <stdlib.h>
 #include <climits>
@@ -18,9 +19,9 @@ optimizationAlgorithm::optimizationAlgorithm(Problem& pbm, const SetUpParams& se
 {
     _fitness_values.resize(setup.population_size());
     _best_fitness_over_time.resize(setup.nb_evolution_steps());
+    _population.resize(setup.population_size(),nullptr);
     for(int i=0; i<setup.population_size(); i++)
     {
-        _population.resize(setup.population_size());
         _population[i] = new Solution{pbm};
     }
     initialize();
@@ -39,7 +40,6 @@ void optimizationAlgorithm::lanceEtAffiche()
 {
     for(unsigned int i=0; i<_setup.independent_runs(); i++)
     {
-        cout<<"balise3."<<i<<endl;
         evaluate();
         cout<<"la meilleure fitness est " << _best_cost << " sur le benchmark N° "<< _population[0]->pbm().get_numfunction()<< endl;
         initialize();
@@ -48,9 +48,8 @@ void optimizationAlgorithm::lanceEtAffiche()
 
 void optimizationAlgorithm::evolution(int iter)
 {
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> distr(0,1);
+    default_random_engine gen{static_cast<long unsigned int>(time(0))};
+    uniform_real_distribution<> distr(0,1);
 
     double a = 2.0 * iter*(2.0/_setup.nb_evolution_steps());
 
@@ -103,10 +102,9 @@ void optimizationAlgorithm::initialize()
 
 void optimizationAlgorithm::evaluate()
 {
-    cout<<"balise3.x.0"<<endl;
-    for(unsigned int iteration=0; iteration<_setup.nb_evolution_steps(); iteration++) //_setup-> ? car &
+
+    for(unsigned int iteration=0; iteration<_setup.nb_evolution_steps(); iteration++)
     {
-        //cout<<"balise3.x.0."<<iteration<<endl;
         _fitness_values=fitness_values();
 
         evolution(iteration);
@@ -118,7 +116,6 @@ void optimizationAlgorithm::evaluate()
             _best_solution=*_population[_alpha_index];
         }
     }
-    cout<<"balise3.x.1"<<endl;
 }
 
 vector<double>&  optimizationAlgorithm::fitness_values()
