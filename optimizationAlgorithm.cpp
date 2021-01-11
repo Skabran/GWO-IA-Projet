@@ -127,17 +127,17 @@ vector<double>&  optimizationAlgorithm::fitness_values()
 
 
         //Met a jour Alpha, Beta et Delta
-        if(_fitness_values[i] < _alpha_score)
+        if(abs(_fitness_values[i]) < _alpha_score)
         {
             _alpha_score=_fitness_values[i];    //Mise a jour du score d'Alpha
             _alpha_index=i;                     //Mise a jour de la position d'Alpha
         }
-        else if((_fitness_values[i] > _alpha_score) && (_fitness_values[i]<_beta_score))
+        else if((abs(_fitness_values[i]) > _alpha_score) && (abs(_fitness_values[i])<_beta_score))
         {
             _beta_score=_fitness_values[i];    //Mise a jour du score de Beta
             _beta_index=i;                    //Mise a jour de la position de Beta
         }
-        else if((_fitness_values[i] > _alpha_score) && (_fitness_values[i]>_beta_score) && (_fitness_values[i]<_delta_score))
+        else if((abs(_fitness_values[i]) > _alpha_score) && (abs(_fitness_values[i])>_beta_score) && (abs(_fitness_values[i])<_delta_score))
         {
             _delta_score=_fitness_values[i];    //Mise a jour du score de Delta
             _delta_index=i;                    //Mise a jour de la position de Delta
