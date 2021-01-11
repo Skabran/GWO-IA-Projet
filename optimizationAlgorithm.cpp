@@ -5,7 +5,7 @@
 #include <vector>
 #include "Problem.h"
 #include "Solution.h"
-#include <random>       //pour le générateur aléatoire
+#include <random>
 #include <ctime>
 #include <stdio.h>
 #include <stdlib.h>
