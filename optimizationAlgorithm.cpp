@@ -55,7 +55,7 @@ void optimizationAlgorithm::evolution(int iter)
 
     for(unsigned int solutionIndex=0; solutionIndex<_population.size(); solutionIndex++)
     {
-        if(solutionIndex!=_alpha_index || solutionIndex!=_beta_index || solutionIndex!=_delta_index)
+        if(solutionIndex!=_alpha_index && solutionIndex!=_beta_index && solutionIndex!=_delta_index)
         {
             for(unsigned int coordoneeIndex=0; coordoneeIndex<_population[solutionIndex]->solution().size(); coordoneeIndex++)
             {
