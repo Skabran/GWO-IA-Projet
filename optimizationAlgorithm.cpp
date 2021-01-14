@@ -55,37 +55,81 @@ void optimizationAlgorithm::evolution(int iter)
 
     for(unsigned int solutionIndex=0; solutionIndex<_population.size(); solutionIndex++)
     {
-        for(unsigned int coordoneeIndex=0; coordoneeIndex<_population[solutionIndex]->solution().size(); coordoneeIndex++)
+        if(solutionIndex!=_alpha_index || solutionIndex!=_beta_index || solutionIndex!=_delta_index)
         {
-            double r1 = distr(gen);
-            double r2 = distr(gen);
+            for(unsigned int coordoneeIndex=0; coordoneeIndex<_population[solutionIndex]->solution().size(); coordoneeIndex++)
+            {
 
-            double A1=2.0*a*r1-a;
-            double C1=2.0*r2;
+                double r1 = distr(gen);
+                double r2 = distr(gen);
 
-            double D_alpha= abs((C1*_population[_alpha_index]->position(coordoneeIndex))-_population[solutionIndex]->position(coordoneeIndex));
-            double X1 = _population[_alpha_index]->position(coordoneeIndex)-A1*D_alpha;
+                double A1=2.0*a*r1-a;
+                double C1=2.0*r2;
 
-            r1 = distr(gen);
-            r2 = distr(gen);
+                double D_alpha= abs((C1*_population[_alpha_index]->position(coordoneeIndex))-_population[solutionIndex]->position(coordoneeIndex));
+                double X1 = _population[_alpha_index]->position(coordoneeIndex)-A1*D_alpha;
 
-            double A2=2.0*a*r1-a;
-            double C2=2.0*r2;
+                r1 = distr(gen);
+                r2 = distr(gen);
 
-            double D_beta= abs(C2*_population[_beta_index]->position(coordoneeIndex)-_population[solutionIndex]->position(coordoneeIndex));
-            double X2 = _population[_beta_index]->position(coordoneeIndex)-A2*D_beta;
+                double A2=2.0*a*r1-a;
+                double C2=2.0*r2;
 
-            r1 = distr(gen);
-            r2 = distr(gen);
+                double D_beta= abs(C2*_population[_beta_index]->position(coordoneeIndex)-_population[solutionIndex]->position(coordoneeIndex));
+                double X2 = _population[_beta_index]->position(coordoneeIndex)-A2*D_beta;
 
-            double A3=2.0*a*r1-a;
-            double C3=2.0*r2;
+                r1 = distr(gen);
+                r2 = distr(gen);
 
-            double D_delta= abs(C3*_population[_delta_index]->position(coordoneeIndex)-_population[solutionIndex]->position(coordoneeIndex));
-            double X3 = _population[_delta_index]->position(coordoneeIndex)-A3*D_delta;
+                double A3=2.0*a*r1-a;
+                double C3=2.0*r2;
 
-            double resultat=(X1+X2+X3)/3.0;
-            _population[solutionIndex]->position(coordoneeIndex,resultat); //applique le resultat a la coordonnée courante de la solution courante
+                double D_delta= abs(C3*_population[_delta_index]->position(coordoneeIndex)-_population[solutionIndex]->position(coordoneeIndex));
+                double X3 = _population[_delta_index]->position(coordoneeIndex)-A3*D_delta;
+
+                double resultat=(X1+X2+X3)/3.0;
+                _population[solutionIndex]->position(coordoneeIndex,resultat); //applique le resultat a la coordonnée courante de la solution courante
+            }
+        }
+    }
+
+    for(unsigned int solutionIndex=0; solutionIndex<_population.size(); solutionIndex++)
+    {
+        if(solutionIndex==_alpha_index || solutionIndex==_beta_index || solutionIndex==_delta_index)
+        {
+            for(unsigned int coordoneeIndex=0; coordoneeIndex<_population[solutionIndex]->solution().size(); coordoneeIndex++)
+            {
+
+                double r1 = distr(gen);
+                double r2 = distr(gen);
+
+                double A1=2.0*a*r1-a;
+                double C1=2.0*r2;
+
+                double D_alpha= abs((C1*_population[_alpha_index]->position(coordoneeIndex))-_population[solutionIndex]->position(coordoneeIndex));
+                double X1 = _population[_alpha_index]->position(coordoneeIndex)-A1*D_alpha;
+
+                r1 = distr(gen);
+                r2 = distr(gen);
+
+                double A2=2.0*a*r1-a;
+                double C2=2.0*r2;
+
+                double D_beta= abs(C2*_population[_beta_index]->position(coordoneeIndex)-_population[solutionIndex]->position(coordoneeIndex));
+                double X2 = _population[_beta_index]->position(coordoneeIndex)-A2*D_beta;
+
+                r1 = distr(gen);
+                r2 = distr(gen);
+
+                double A3=2.0*a*r1-a;
+                double C3=2.0*r2;
+
+                double D_delta= abs(C3*_population[_delta_index]->position(coordoneeIndex)-_population[solutionIndex]->position(coordoneeIndex));
+                double X3 = _population[_delta_index]->position(coordoneeIndex)-A3*D_delta;
+
+                double resultat=(X1+X2+X3)/3.0;
+                _population[solutionIndex]->position(coordoneeIndex,resultat); //applique le resultat a la coordonnée courante de la solution courante
+            }
         }
     }
 }
